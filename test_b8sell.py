@@ -1,5 +1,7 @@
 import unittest
 
+from helga_b8sell import b8sell
+
 
 class PluginTest(unittest.TestCase):
 
@@ -7,4 +9,5 @@ class PluginTest(unittest.TestCase):
         pass
 
     def test_response(self):
-        self.assertTrue(False)
+        resp = b8sell(None, None, 'aineko', None, None, None, carat_ratio=1)
+        assert '^' in resp

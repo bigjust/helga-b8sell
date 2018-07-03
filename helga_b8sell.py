@@ -3,10 +3,20 @@ from helga.plugins import command
 
 from random import randint, random
 
-CARAT_RATIO = getattr(settings, 'B8SELL_CARAT_RATIO', 0.15)
+from helga_mimic import generate_sentence
 
-@command('b8sell', help='basically b8sell')
-def b8sell(client, channel, nick, message, cmd, args, carat_ratio=CARAT_RATIO):
+CARAT_RATIO = getattr(settings, 'B8SELL_CARAT_RATIO', 0.15)
+NICK = getattr(settings, 'NICK')
+
+
+@preprocessor
+def b8sell(client, channel, nick, message, carat_ratio=CARAT_RATIO):
+
+    if NICK in message:
+        resp = generate_sentence(['b8sell'])
+        client.msg(channel, resp)
 
     if nick == 'aineko' and random() < carat_ratio:
-        return randint(1, 4) * '^'
+        client.msg(channel, randint(1, 4) * '^')
+
+    return channel, nick, message

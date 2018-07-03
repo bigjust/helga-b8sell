@@ -20,6 +20,9 @@ setup(
     license='LICENSE',
     packages=find_packages(),
     include_package_data=True,
+    installed_requires = (
+        'helga_mimic',
+    ),
     py_modules=['helga_b8sell'],
     zip_safe=True,
     entry_points = dict(

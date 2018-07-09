@@ -1,7 +1,7 @@
 helga-b8sell
 ===========
 
-general description of plugin
+basically https://github.com/b8sell
 
 License
 -------
